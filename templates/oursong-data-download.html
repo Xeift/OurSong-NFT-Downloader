@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurSong NFT 資料下載</title>
+    <style>
+        /* Nord Theme Colors */
+        :root {
+            --nord0: #2E3440;
+            --nord1: #3B4252;
+            --nord2: #434C5E;
+            --nord3: #4C566A;
+            --nord4: #D8DEE9;
+            --nord5: #E5E9F0;
+            --nord6: #ECEFF4;
+            --nord7: #8FBCBB;
+            --nord8: #88C0D0;
+            --nord9: #81A1C1;
+            --nord10: #5E81AC;
+            --nord11: #BF616A;
+            --nord12: #D08770;
+            --nord13: #EBCB8B;
+            --nord14: #A3BE8C;
+            --nord15: #B48EAD;
+        }
+
+        body {
+            background-color: var(--nord0);
+            color: var(--nord6);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .container,
+        .faq-section {
+            background-color: var(--nord1);
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: var(--nord8);
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: var(--nord6);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 2px solid var(--nord3);
+            border-radius: 5px;
+            background-color: var(--nord0);
+            color: var(--nord6);
+        }
+
+        .download-options {
+            margin-bottom: 20px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--nord10);
+            color: var(--nord6);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: var(--nord9);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--nord3);
+            color: var(--nord7);
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: var(--nord2);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: var(--nord1);
+            border-left: 3px solid var(--nord7);
+            color: var(--nord6);
+        }
+
+        .active .faq-answer {
+            display: block;
+        }
+
+        .faq-answer img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            color: var(--nord13);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            background-color: var(--nord3);
+            color: var(--nord6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>OurSong NFT Holder <br> 資料下載器</h1>
+        <form id="downloadForm">
+            <label for="creatorIds">請輸入創作者 ID（@後面的那串）:</label>
+            <input type="text" id="creatorIds" placeholder="e.g., dAb, Jimmy123, OnMarriage..." required>
+
+            <div class="download-options">
+                <label>選擇下載格式</label><br>
+                <input type="radio" id="xlsx" name="fileType" value="xlsx" checked>
+                <label for="xlsx">XLSX</label><br>
+                <input type="radio" id="json" name="fileType" value="json">
+                <label for="json">JSON</label>
+            </div>
+
+            <button type="button" class="button" onclick="downloadData()">下載（資料多的話可能要等上一陣子）</button>
+        </form>
+    </div>
+
+    <div class="faq-section">
+        <h2>常見問題</h2>
+        <div class="faq-item">
+            <div class="faq-question">1. 為什麼要做這東西？</div>
+            <div class="faq-answer">OurSong 要關了，詳細公告請見<a
+                    href="https://oursong.zendesk.com/hc/zh-tw/articles/37610690191769--重要公告-OurSong-將於-2024-11-30-起暫停服務"
+                    target="_blank">此</a>。<br>
+                如果您是創作者，可以用這個工具下載您 NFT 的相關資料。<br>
+                如果您是收藏者，建議儘快提現您的 NFT 。<br>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. 創作者 ID 是什麼？</div>
+            <div class="faq-answer">
+                @後面的那串東西，見下圖
+                <img src="https://cdn.discordapp.com/attachments/1286932322620411974/1292397615383707708/ID.png?ex=67039693&is=67024513&hm=7947a7a2bf9639754f627bb32a87a9c11be5f7672d76c074458cd0032dc30cf9&"
+                    alt="創作者 ID">
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. xlsx 和 json 差在哪？</div>
+            <div class="faq-answer">選擇 xlsx 的話，可以用試算表開啟，還有附圖片，比較適合人類閱讀。json 則適合讓電腦或程式讀，方便做資料處理。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. 這些資料的來源為何？</div>
+            <div class="faq-answer">使用 <a href="https://www.oursong.com/open-api" target="_blank">OurSong 官方提供的 API</a>
+                取得的。兩年前，我在開發 OurSong 驗證 NFT 的 Discord 機器人時申請過 API key，現在 OurSong 要關了，想說來盡最後一分力。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. 怎麼沒有持有者的地址？</div>
+            <div class="faq-answer">要取得持有者地址需要先取得本人的 authenticate code，這需要他們主動授權。如果需要更完整的資料，建議您詢問 <a
+                    href="https://oursong.zendesk.com/hc/zh-tw/requests/new" target="_blank">OurSong 客服</a>。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">6. 我有其他問題</div>
+            <div class="faq-answer">請私訊 <a href="https://www.facebook.com/xeift" target="_blank">Facebook</a> 或者 Discord
+                @xeift。帳戶問題不要找我，請詢問
+                <a href="https://oursong.zendesk.com/hc/zh-tw/requests/new" target="_blank"> OurSong 客服</a>。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadData() {
+            const creatorIds = document.getElementById('creatorIds').value.split(',').map(id => id.trim());
+            const fileType = document.querySelector('input[name="fileType"]:checked').value;
+
+            if (creatorIds.length === 0 || !creatorIds[0]) {
+                alert("請輸入至少一個創作者 ID");
+                return;
+            }
+
+            let url = `http://localhost:5000/api/oursong-data-download?type=${fileType}`;
+
+            creatorIds.forEach(id => {
+                url += `&creator_id=${encodeURIComponent(id)}`;
+            });
+
+            window.open(url, '_blank');
+        }
+
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
