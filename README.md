@@ -2,7 +2,15 @@
 
 OurSong NFT 資料下載器，可匯出創作者 NFT profile 與 holder list，並產生 JSON 或 XLSX 檔。
 
+## 截圖
+
+### 前端
+
 ![OurSong NFT Downloader 前端截圖](assets/fe_screenshot.png)
+
+### XLSX 匯出
+
+![XLSX 匯出截圖](https://github.com/user-attachments/assets/ce57463f-d8d0-43bc-9ca1-0d7c55d7edd4)
 
 ## 如何使用？
 
